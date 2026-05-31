@@ -1,14 +1,12 @@
+import { Hero } from './features/Hero/Hero';
+import { About } from './features/About/About';
+
 const App = () => {
   return (
-    <div className="app-container">
-      <header>
-        <h1>Анастасия Григорьева — Frontend Developer</h1>
-        <p> Лендинг-презентация</p>
-      </header>
-      
-      <main>
-      </main>
-    </div>
+    <main>
+      <Hero />
+      <About />
+    </main>
   );
 };
 
