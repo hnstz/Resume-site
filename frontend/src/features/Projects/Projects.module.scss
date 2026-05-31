@@ -1,0 +1,73 @@
+@use '../../styles/variables' as *;
+
+.section {
+  padding: 5rem 2rem;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projectCard {
+  padding: 2.5rem;
+  border-radius: $border-radius;
+  border: 1px solid #e9ecef;
+  background-color: $color-bg;
+}
+
+.projectHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  
+  h3 {
+    font-size: 1.5rem;
+    color: $color-text;
+  }
+}
+
+.badge {
+  background-color: $color-primary;
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+  color: #495057;
+}
+
+.role {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: $border-radius;
+  border-left: 4px solid $color-primary;
+
+  strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $color-text;
+  }
+  
+  p {
+    color: #495057;
+  }
+}
