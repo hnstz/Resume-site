@@ -74,7 +74,7 @@ export const ContactForm = () => {
           />
           <Textarea
             label="Комментарий"
-            placeholder="Опишите вашу задачу..."
+            placeholder="Ваш комментарий..."
             error={errors.comment?.message}
             {...register('comment')}
           />

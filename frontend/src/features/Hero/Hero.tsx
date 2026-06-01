@@ -5,16 +5,13 @@ export const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={styles.title}>Frontend Developer</h1>
+        <h1 className={styles.title}>AI Frontend / Fullstack Developer</h1>
         <p className={styles.subtitle}>
-          Создаю надежные веб-приложения на React и TypeScript
+          Анастасия Григорьева
         </p>
         <div className={styles.actions}>
           <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
             Связаться со мной
-          </Button>
-          <Button variant="secondary">
-            Смотреть проекты
           </Button>
         </div>
       </div>

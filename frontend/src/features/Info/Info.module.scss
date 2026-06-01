@@ -1,8 +1,8 @@
 @use '../../styles/variables' as *;
 
 .section {
-  padding: 5rem 2rem;
-  background-color: #ffffff;
+  background-color: $color-bg;
+  padding: 80px 20px;
 }
 
 .container {
@@ -11,36 +11,161 @@
 }
 
 .title {
+  font-family: $font-main;
+  color: $color-primary;
   font-size: 2.5rem;
+  margin-bottom: 40px;
   text-align: center;
-  margin-bottom: 3rem;
-  color: $color-text;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: $gradient-primary;
+    margin: 12px auto 0;
+    border-radius: 2px;
+  }
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.wideCard {
+  grid-column: span 2;
+
+  @media (max-width: $bp-tablet) {
+    grid-column: span 1;
+  }
 }
 
 .card {
-  padding: 2rem;
+  background: $color-bg-card;
+  border: 1px solid rgba(#7A1C31, 0.08);
   border-radius: $border-radius;
-  background-color: $color-bg;
-  border: 1px solid #e9ecef;
-  transition: transform 0.2s ease;
+  padding: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(#4A0E17, 0.05);
+    border-color: rgba(#7A1C31, 0.2);
   }
 
   h3 {
-    margin-bottom: 1rem;
+    font-family: $font-main;
     color: $color-primary;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(#7A1C31, 0.1);
+    padding-bottom: 10px;
   }
+}
+
+.subTitle {
+  margin-top: 30px !important;
+}
+
+.skillsGroups {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+
+  @media (max-width: $bp-mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skillGroup {
+  h4 {
+    font-family: $font-main;
+    color: $color-primary-dark;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  font-family: $font-main;
+  background-color: $color-bg;
+  color: $color-text;
+  border: 1px solid rgba(#6B5E60, 0.2);
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: $gradient-primary;
+    color: #FFFFFF;
+    border-color: transparent;
+  }
+}
+
+.education {
+  font-family: $font-main;
+  color: $color-text;
+  
+  .univer {
+    font-weight: bold;
+    color: $color-primary-dark;
+    margin-bottom: 4px;
+  }
+  .faculty {
+    color: $color-text-muted;
+    margin-bottom: 4px;
+    font-size: 0.95rem;
+  }
+  .specialty {
+    margin-bottom: 8px;
+  }
+  .year {
+    color: $color-primary;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+}
+
+.languages {
+  font-family: $font-main;
+  color: $color-text;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
   p {
-    color: #495057;
+    margin: 0;
+  }
+}
+
+.learningList {
+  font-family: $font-main;
+  color: $color-text;
+  padding-left: 20px;
+  margin: 0;
+
+  li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
