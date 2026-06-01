@@ -1,0 +1,36 @@
+@use '../../styles/variables' as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $color-text;
+}
+
+.input {
+  padding: 10px 14px;
+  border: 1px solid #ced4da;
+  border-radius: $border-radius;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input:focus {
+  border-color: $color-primary;
+}
+
+.inputError {
+  border-color: $color-error;
+}
+
+.errorMessage {
+  font-size: 0.75rem;
+  color: $color-error;
+}

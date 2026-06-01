@@ -1,0 +1,40 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #edf6ff 70%);
+  background: $gradient-soft;
+  flex-direction: column;
+}
+
+.content {
+  max-width: 800px;
+  text-align: center;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: $color-text;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 2.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  
+  @media (max-width: $bp-mobile) {
+    flex-direction: column;
+  }
+}
