@@ -4,7 +4,7 @@
 
 ---
 
-*Ссылка на деплой:* https://resume-owdpjdiuv-hnstzs-projects.vercel.app/
+*Ссылка на деплой:* https://resume-coral-six-77.vercel.app
 
 ---
 
