@@ -21,16 +21,18 @@ const openai = new OpenAI({
     }
 });
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
+let transporter = null;
 
-// ГЛОБАЛЬНАЯ ПЕРЕМЕННАЯ ДЛЯ ПАМЯТИ
-// Сервер будет хранить здесь ID последней сработавшей модели, пока не перезагрузится
+if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+    transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    });
+}
+
 let lastWorkingModel = null; 
 
 async function getWorkingFreeModels() {
@@ -42,7 +44,7 @@ async function getWorkingFreeModels() {
             .filter(model => model.pricing && model.pricing.prompt === "0" && model.pricing.completion === "0")
             .map(model => model.id);
         
-        console.log(`🤖 Найдено актуальных бесплатных моделей: ${freeModels.length}`);
+        console.log(` Найдено актуальных бесплатных моделей: ${freeModels.length}`);
         return freeModels.slice(0, 5); 
     } catch (error) {
         console.error("Ошибка при поиске бесплатных моделей:", error);
@@ -59,24 +61,34 @@ app.post('/api/contact', async (req, res) => {
         }
 
         const mailToOwner = {
-            from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_USER,
+            from: process.env.EMAIL_USER || 'dev@local',
+            to: 'nastya54321p@gmail.com',
             subject: `Новая заявка с портфолио от ${name}`,
             text: `Имя: ${name}\nТелефон: ${phone}\nEmail: ${email}\nКомментарий: ${comment}`
         };
 
         const mailToUser = {
-            from: process.env.EMAIL_USER,
+            from: process.env.EMAIL_USER || 'dev@local',
             to: email,
             subject: 'Ваша заявка успешно отправлена',
             text: `Здравствуйте, ${name}!\n\nСпасибо за ваше обращение. Я получила ваше сообщение и свяжусь с вами в ближайшее время.\n\nВаш комментарий:\n${comment}\n\nС уважением,\nАнастасия Григорьева`
         };
 
-        await transporter.sendMail(mailToOwner);
-        await transporter.sendMail(mailToUser);
+        if (transporter) {
+            await transporter.sendMail(mailToOwner);
+            await transporter.sendMail(mailToUser);
+        } else {
+            console.log('\n--- DEV MODE: ИМИТАЦИЯ ОТПРАВКИ EMAIL ---');
+            console.log('Кому (Владельцу):', mailToOwner.to);
+            console.log('Текст:\n', mailToOwner.text);
+            console.log('\nКому (Пользователю):', mailToUser.to);
+            console.log('Текст:\n', mailToUser.text);
+            console.log('-------------------------------------------\n');
+        }
 
-        res.status(200).json({ message: 'Письма успешно отправлены' });
+        res.status(200).json({ message: 'Письма успешно обработаны' });
     } catch (error) {
+        console.error("Ошибка отправки письма:", error);
         res.status(500).json({ error: 'Ошибка сервера при отправке письма' });
     }
 });

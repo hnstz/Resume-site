@@ -34,6 +34,7 @@ export const ContactForm = () => {
       await axios.post('http://localhost:3000/api/contact', data);
     } catch (error) {
       setServerError('Произошла ошибка при отправке. Попробуйте позже.');
+      throw error; 
     }
   };
 

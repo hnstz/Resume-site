@@ -105,7 +105,7 @@ export const Projects = () => {
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        <h2 className={styles.title}>Кейсы и проекты</h2>
+        <h2 className={styles.title}>Ключевые проекты</h2>
         <div className={styles.grid}>
           {projectList.map((project, index) => (
             <div key={index} className={styles.projectCard}>
