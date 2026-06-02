@@ -31,7 +31,8 @@ export const ContactForm = () => {
   const onSubmit = async (data: ContactFormValues) => {
     setServerError(null);
     try {
-      await axios.post('http://localhost:3000/api/contact', data);
+      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      await axios.post(`${baseURL}/api/contact`, data);
     } catch (error) {
       setServerError('Произошла ошибка при отправке. Попробуйте позже.');
       throw error; 
