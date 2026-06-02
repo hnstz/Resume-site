@@ -9,6 +9,7 @@ interface Message {
 }
 
 export const AiAssistant = () => {
+  console.log('ПЕРЕМЕННАЯ ИЗ ВЕРЦЕЛЯ:', import.meta.env.VITE_API_URL);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Привет! Я AI-ассистент Анастасии. Спроси меня о её стеке, образовании или опыте.' }
   ]);
