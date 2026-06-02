@@ -24,7 +24,8 @@ export const AiAssistant = () => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:3000/api/chat', {
+      const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+      const response = await axios.post(`${baseURL}/api/chat`, {
         message: input,
       });
       
