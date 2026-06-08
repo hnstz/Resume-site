@@ -5,7 +5,7 @@ export const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.content}>
-        <h1 className={styles.title}>AI Frontend / Fullstack Developer</h1>
+        <h1 className={styles.title}>Frontend Developer</h1>
         <p className={styles.subtitle}>
           Анастасия Григорьева
         </p>
